@@ -18,6 +18,8 @@ services:
     volumes:
       - static:/backend_static
       - media:/app/media
+    depends_on:
+      - db
 
   frontend:
     image: shulikin/kittygram_frontend
@@ -25,6 +27,8 @@ services:
     command: cp -r /app/build/. /static/
     volumes:
       - static:/static
+    depends_on:
+      - backend
 
   gateway:
     image: shulikin/kittygram_gateway
@@ -34,3 +38,6 @@ services:
       - media:/media
     ports:
       - 9000:80
+    depends_on:
+      - backend
+      - frontend
