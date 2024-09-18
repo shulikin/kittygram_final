@@ -18,8 +18,7 @@ services:
     volumes:
       - static:/backend_static
       - media:/app/media
-    depends_on:
-      - db
+
   frontend:
     image: shulikin/kittygram_frontend
     env_file: .env
