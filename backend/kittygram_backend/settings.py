@@ -7,8 +7,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-PORT_DB = 5432
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY', get_random_secret_key())
@@ -17,7 +15,7 @@ IP = os.getenv('IP')
 
 DOMAIN = os.getenv('DOMAIN')
 
-DEBUG = False
+DEBUG = bool(os.getenv('DEBUG'))
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', IP, DOMAIN ]
 
@@ -64,6 +62,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'kittygram_backend.wsgi.application'
 
+PORT_DB = 5432
 
 DATABASES = {
     'default': {
